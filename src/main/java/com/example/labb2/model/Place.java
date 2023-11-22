@@ -25,11 +25,15 @@ public class Place {
     @Column(name="name")
     private String name;
 
-    @Column(name="categoryId")
-    private int categoryId;
+    @PrimaryKeyJoinColumn(name="categoryId")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId")
+    private Category category;
 
-    @Column(name="userId")
-    private int userId;
+    @PrimaryKeyJoinColumn(name="userId")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
 
     @Column(name="status")
     private String status;
