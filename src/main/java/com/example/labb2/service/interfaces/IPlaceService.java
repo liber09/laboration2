@@ -1,10 +1,10 @@
-package com.example.labb2.service;
+package com.example.labb2.service.interfaces;
 
 import com.example.labb2.dto.CategoryDto;
 import com.example.labb2.dto.PlaceDto;
 import java.util.List;
 
-public interface placeService {
+public interface IPlaceService {
 
     List<PlaceDto> getAllPublicPlaces ();
     PlaceDto getPublicPlace ();
