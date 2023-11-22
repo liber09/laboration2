@@ -15,4 +15,5 @@ public interface placeService {
     void createPlace();
     Boolean updatePlace();
 
+    void deletePlace();
 }

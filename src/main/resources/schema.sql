@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS Laboration2;
-USE Laboration2;
+CREATE DATABASE IF NOT EXISTS springBootLab2;
+USE springBootLab2;
 CREATE TABLE IF NOT EXISTS category(
         id int PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(255),
