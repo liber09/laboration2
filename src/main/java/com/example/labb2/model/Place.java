@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.data.geo.Point;
+
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -23,7 +26,24 @@ public class Place {
     private String name;
 
     @Column(name="categoryId")
-    private String categoryId;
+    private int categoryId;
 
+    @Column(name="userId")
+    private int userId;
+
+    @Column(name="status")
+    private String status;
+
+    @Column(name="created")
+    private LocalDate created;
+
+    @Column(name="lastUpdated")
+    private LocalDate lastUpdated;
+
+    @Column(name="description")
+    private String description;
+
+    @Column(name="coordinates")
+    private Point coordinates;
 
 }
