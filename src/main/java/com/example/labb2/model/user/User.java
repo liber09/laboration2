@@ -1,4 +1,4 @@
-package com.example.labb2.model;
+package com.example.labb2.model.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,4 +24,6 @@ public class User {
 
     @Column(name="lastName")
     private String lastName;
+
+
 }

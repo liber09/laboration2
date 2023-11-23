@@ -1,5 +1,6 @@
 package com.example.labb2.model;
 
+import com.example.labb2.model.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

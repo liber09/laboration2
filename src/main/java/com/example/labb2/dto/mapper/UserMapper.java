@@ -1,7 +1,7 @@
 package com.example.labb2.dto.mapper;
 
 import com.example.labb2.dto.model.UserDto;
-import com.example.labb2.model.User;
+import com.example.labb2.model.user.User;
 
 public class UserMapper {
     public static UserDto toUserDto(User user){

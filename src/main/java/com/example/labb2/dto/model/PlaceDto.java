@@ -1,7 +1,7 @@
 package com.example.labb2.dto.model;
 
 import com.example.labb2.model.Category;
-import com.example.labb2.model.User;
+import com.example.labb2.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
