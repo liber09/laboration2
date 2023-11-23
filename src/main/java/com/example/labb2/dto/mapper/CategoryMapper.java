@@ -1,6 +1,6 @@
 package com.example.labb2.dto.mapper;
 
-import com.example.labb2.dto.CategoryDto;
+import com.example.labb2.dto.model.CategoryDto;
 import com.example.labb2.model.Category;
 
 public class CategoryMapper {

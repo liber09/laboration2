@@ -1,6 +1,6 @@
 package com.example.labb2.dto.mapper;
 
-import com.example.labb2.dto.PlaceDto;
+import com.example.labb2.dto.model.PlaceDto;
 import com.example.labb2.model.Place;
 
 public class PlaceMapper {

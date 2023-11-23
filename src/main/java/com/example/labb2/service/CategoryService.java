@@ -1,6 +1,6 @@
 package com.example.labb2.service;
 
-import com.example.labb2.dto.CategoryDto;
+import com.example.labb2.dto.model.CategoryDto;
 import com.example.labb2.service.interfaces.ICategoryService;
 
 public class CategoryService implements ICategoryService {

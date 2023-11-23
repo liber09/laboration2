@@ -1,6 +1,6 @@
 package com.example.labb2.service.interfaces;
 
-import com.example.labb2.dto.CategoryDto;
+import com.example.labb2.dto.model.CategoryDto;
 
 public interface ICategoryService {
     CategoryDto getAllCategories();
