@@ -8,8 +8,6 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -19,7 +17,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class CategoryDto {
-    private UUID id;
+    private Long id;
     private String name;
     private String symbol;
     private String Description;

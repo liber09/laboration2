@@ -21,6 +21,9 @@ public class Category {
     @Column(name="name")
     private String name;
 
+    @Column(name="name")
+    private String symbol;
+
     @Column(name="description")
     private String description;
 }
