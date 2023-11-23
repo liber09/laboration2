@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.Collection;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,6 +26,20 @@ public class User {
 
     @Column(name="lastName")
     private String lastName;
+
+    private String userName;
+
+    private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+            joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "roleId")})
+    private Collection<Role> roles;
+
+    public String getFullName(){
+        return firstName != null ? firstName.concat(" ").concat(lastName) : "";
+    }
 
 
 }

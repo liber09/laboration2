@@ -12,6 +12,8 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.util.Collection;
+
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -20,7 +22,14 @@ import lombok.experimental.Accessors;
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
-    private Long userId;
+    private String userName;
+    private String password;
     private String firstName;
     private String lastName;
+    private boolean isAdmin;
+    private Collection<RoleDto> roles;
+
+    public String getFullName() {
+        return firstName != null ? firstName.concat(" ").concat(lastName) : "";
+    }
 }
