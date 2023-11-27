@@ -6,24 +6,23 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.util.Collection;
 
 @Getter
 @Setter
-@Accessors(chain = true)
 @NoArgsConstructor
 @ToString
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@AllArgsConstructor
+@Builder
 public class UserDto {
     private String userName;
     private String password;
+    private String email;
     private String firstName;
     private String lastName;
     private boolean isAdmin;

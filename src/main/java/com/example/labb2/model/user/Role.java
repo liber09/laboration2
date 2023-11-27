@@ -10,7 +10,6 @@ import java.util.Collection;
 @Getter
 @Setter
 @NoArgsConstructor
-@Accessors(chain = true)
 @Entity
 @Table(name = "role")
 public class Role {
