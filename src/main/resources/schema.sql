@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS place(
         name VARCHAR(255),
         categoryId INT,
         userId INT,
+        isPrivate BOOL,
         status VARCHAR(6),
         created DATETIME,
         lastUpdated DATETIME,

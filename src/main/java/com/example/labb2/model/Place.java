@@ -36,6 +36,9 @@ public class Place {
     @JoinColumn(name = "userId")
     private User user;
 
+    @Column(name="isPrivate")
+    private Boolean isPrivate;
+
     @Column(name="status")
     private String status;
 

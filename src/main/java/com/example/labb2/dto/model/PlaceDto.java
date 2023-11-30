@@ -25,6 +25,7 @@ public class PlaceDto {
     private String name;
     private Category category;
     private User user;
+    private Boolean isPrivate;
     private String status;
     private LocalDate created;
     private LocalDate lastUpdated;

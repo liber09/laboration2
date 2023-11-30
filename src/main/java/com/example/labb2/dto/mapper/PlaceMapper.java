@@ -9,6 +9,8 @@ public class PlaceMapper {
                 .setPlaceId(place.getPlaceId())
                 .setCategory(place.getCategory())
                 .setCoordinates(place.getCoordinates())
+                .setUser(place.getUser())
+                .setIsPrivate(place.getIsPrivate())
                 .setName(place.getName())
                 .setCreated(place.getCreated())
                 .setDescription(place.getDescription())
