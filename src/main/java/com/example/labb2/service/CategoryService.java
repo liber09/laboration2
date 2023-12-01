@@ -4,10 +4,12 @@ import com.example.labb2.dto.model.CategoryDto;
 import com.example.labb2.service.interfaces.ICategoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryService implements ICategoryService {
     @Override
-    public CategoryDto getAllCategories() {
+    public List<CategoryDto> getAllCategories() {
         return null;
     }
 

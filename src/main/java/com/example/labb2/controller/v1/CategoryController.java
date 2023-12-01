@@ -28,7 +28,7 @@ public class CategoryController {
     }
     @GetMapping("{id}")
     public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Long id){
-        var city = service.getCategoryById(id);
-        return city.map( categoryDto -> ResponseEntity.ok().body(categoryDto)).orElseGet(() -> ResponseEntity.notFound().build());
+        var category = service.getCategoryById(id);
+        return category.map( categoryDto -> ResponseEntity.ok().body(categoryDto)).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
