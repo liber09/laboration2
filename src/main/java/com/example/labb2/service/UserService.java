@@ -15,7 +15,7 @@ public class UserService {
         this.repository = repository;
     }
 
-    public Optional<UserDto> getUserById(long id){
+    public Optional<User> getUserById(long id){
 
         return repository.findById(id);
     }

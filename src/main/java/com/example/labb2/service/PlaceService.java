@@ -2,6 +2,7 @@ package com.example.labb2.service;
 
 import com.example.labb2.dto.model.CategoryDto;
 import com.example.labb2.dto.model.PlaceDto;
+import com.example.labb2.model.Place;
 import com.example.labb2.repository.PlaceRepository;
 import com.example.labb2.service.interfaces.IPlaceService;
 import org.springframework.stereotype.Service;
@@ -13,12 +14,12 @@ import java.util.Optional;
 public class PlaceService implements IPlaceService {
     PlaceRepository repository;
 
-    public Optional<PlaceDto> getPlaceById(long id) {
+    public Optional<Place> getPlaceById(long id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<PlaceDto> getAllPublicPlaces() {
+    public List<Place> getAllPublicPlaces() {
         return null;
     }
 
@@ -28,17 +29,17 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    public List<PlaceDto> getAllPublicPlacesInCategory(CategoryDto category) {
+    public List<Place> getAllPublicPlacesInCategory(CategoryDto category) {
         return null;
     }
 
     @Override
-    public List<PlaceDto> getAllPlaces() {
+    public List<Place> getAllPlaces() {
         return repository.findAll();
     }
 
     @Override
-    public List<PlaceDto> getPlacesInArea(int radius) {
+    public List<Place> getPlacesInArea(int radius) {
         return null;
     }
 
@@ -46,8 +47,6 @@ public class PlaceService implements IPlaceService {
     public void createPlace() {
 
     }
-
-
 
     @Override
     public Boolean updatePlace() {

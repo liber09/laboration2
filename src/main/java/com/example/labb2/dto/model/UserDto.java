@@ -20,4 +20,3 @@ import java.util.Collection;
     public record UserDto(Long id, @Size(max = 255) String firstName,
                           @Size(max = 255) String lastName) implements Serializable {
     }
-
