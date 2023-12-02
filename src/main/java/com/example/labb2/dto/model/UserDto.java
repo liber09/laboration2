@@ -6,29 +6,21 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor
 @Builder
-public class UserDto {
-    private String userName;
-    private String password;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private boolean isAdmin;
-    private Collection<RoleDto> roles;
 
-    public String getFullName() {
-        return firstName != null ? firstName.concat(" ").concat(lastName) : "";
+    public record UserDto(Long id, @Size(max = 255) String firstName,
+                          @Size(max = 255) String lastName) implements Serializable {
     }
-}
+

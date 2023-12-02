@@ -2,6 +2,7 @@ package com.example.labb2.model;
 
 import com.example.labb2.model.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public class Place {
     private Long placeId;
 
     @Column(name="name")
+    @Size(max = 255)
     private String name;
 
     @PrimaryKeyJoinColumn(name="categoryId")
@@ -39,6 +41,7 @@ public class Place {
     @Column(name="isPrivate")
     private Boolean isPrivate;
 
+    @Size(max = 255)
     @Column(name="status")
     private String status;
 
@@ -49,6 +52,7 @@ public class Place {
     private LocalDate lastUpdated;
 
     @Column(name="description")
+    @Size(max = 255)
     private String description;
 
     @Column(name="coordinates")

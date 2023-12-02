@@ -1,6 +1,7 @@
 package com.example.labb2.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,12 +23,15 @@ public class Category {
     private Long categoryId;
 
     @Column(name="name")
+    @Size(max = 255)
     private String name;
 
     @Column(name="name")
+    @Size(max = 255)
     private String symbol;
 
     @Column(name="description")
+    @Size(max = 255)
     private String description;
 
     @OneToMany(mappedBy = "category")

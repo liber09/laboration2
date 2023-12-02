@@ -1,6 +1,7 @@
 package com.example.labb2.model.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,17 +22,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
+    @Size(max = 255)
     @Column(name="firstName")
     private String firstName;
 
+    @Size(max = 255)
     @Column(name="lastName")
     private String lastName;
-
-    private String userName;
-
-    private String password;
-
-    private String email;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role",
