@@ -27,8 +27,10 @@ public class CategoryController {
         return service.getAllCategories();
     }
     @GetMapping("{id}")
-    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Long id){
-        var category = service.getCategoryById(id);
-        return category.map( categoryDto -> ResponseEntity.ok().body(categoryDto)).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Long id) {
+        var categoryService = service.getCategoryById(id);
+
+        return categoryService.map(categoryDto -> ResponseEntity.ok().body(categoryDto))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

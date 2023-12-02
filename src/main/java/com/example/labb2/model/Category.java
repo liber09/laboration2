@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,4 +29,7 @@ public class Category {
 
     @Column(name="description")
     private String description;
+
+    @OneToMany(mappedBy = "category")
+    private Set<Place> locations = new LinkedHashSet<>();
 }

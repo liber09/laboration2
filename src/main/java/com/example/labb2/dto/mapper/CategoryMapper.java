@@ -4,11 +4,16 @@ import com.example.labb2.dto.model.CategoryDto;
 import com.example.labb2.model.Category;
 
 public class CategoryMapper {
-    public static CategoryDto toCategoryDto(Category category){
+    //public static CategoryDto toCategoryDto(Category category){
+        /*
         return new CategoryDto()
                 .setId(category.getCategoryId())
                 .setName(category.getName())
                 .setDescription(category.getDescription())
                 .setSymbol(category.getSymbol());
+
+
     }
+
+         */
 }

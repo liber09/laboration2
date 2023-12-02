@@ -27,7 +27,7 @@ public class Place {
     private String name;
 
     @PrimaryKeyJoinColumn(name="categoryId")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
     private Category category;
 

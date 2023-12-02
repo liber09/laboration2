@@ -1,10 +1,12 @@
 package com.example.labb2.service;
 
 import com.example.labb2.dto.model.CategoryDto;
+import com.example.labb2.model.Category;
 import com.example.labb2.service.interfaces.ICategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService implements ICategoryService {
@@ -14,7 +16,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public CategoryDto getCategoryById(long categoryId) {
+    public Optional<CategoryDto> getCategoryById(long categoryId) {
         return null;
     }
 
