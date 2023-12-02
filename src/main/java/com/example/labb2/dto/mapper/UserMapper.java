@@ -12,8 +12,6 @@ public class UserMapper {
         return UserDto.builder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .email(user.getEmail())
-                .roles(RoleMapper.toRoleDtos(user.getRoles()))
                 .build();
     }
 }

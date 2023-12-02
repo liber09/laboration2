@@ -13,11 +13,8 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Set;
 
-@Getter
-@Setter
 @Accessors(chain = true)
 //@NoArgsConstructor
-@ToString
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 

@@ -13,9 +13,6 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Getter
-@Setter
-@ToString
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder

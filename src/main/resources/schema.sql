@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS place(
         status VARCHAR(6),
         created DATETIME,
         lastUpdated DATETIME,
-        description TEXT(65535),
+        description TEXT,
         coordinates POINT);
 CREATE TABLE IF NOT EXISTS users(
         id int PRIMARY KEY AUTO_INCREMENT,

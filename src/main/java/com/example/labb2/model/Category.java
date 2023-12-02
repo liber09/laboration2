@@ -26,7 +26,7 @@ public class Category {
     @Size(max = 255)
     private String name;
 
-    @Column(name="name")
+    @Column(name="symbol")
     @Size(max = 255)
     private String symbol;
 

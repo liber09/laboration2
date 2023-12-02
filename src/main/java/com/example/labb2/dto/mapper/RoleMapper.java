@@ -11,7 +11,7 @@ public class RoleMapper {
     public static RoleDto toRoleDto(Role role) {
         return RoleDto
                 .builder()
-                .role(role.getRole().toString())
+                //.role(role.getRole().toString())
                 .build();
     }
 

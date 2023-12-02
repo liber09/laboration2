@@ -30,11 +30,11 @@ public class User {
     @Column(name="lastName")
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
-            joinColumns = {@JoinColumn(name = "userId")},
-            inverseJoinColumns = {@JoinColumn(name = "roleId")})
-    private Collection<Role> roles;
+    //@ManyToMany(fetch = FetchType.LAZY)
+    //JoinTable(name = "user_role",
+    //        joinColumns = {@JoinColumn(name = "userId")},
+    //        inverseJoinColumns = {@JoinColumn(name = "roleId")})
+    //private Collection<Role> roles;
 
     public String getFullName(){
         return firstName != null ? firstName.concat(" ").concat(lastName) : "";

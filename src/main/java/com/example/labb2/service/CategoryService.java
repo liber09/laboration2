@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CategoryService implements ICategoryService {
     CategoryRepository repository;
     @Override
-    public List<CategoryDto> getAllCategories() {
+    public List<Category> getAllCategories() {
         return null;
     }
 

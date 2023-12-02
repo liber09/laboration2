@@ -1,6 +1,7 @@
 package com.example.labb2.controller.v1;
 
 import com.example.labb2.dto.model.CategoryDto;
+import com.example.labb2.model.Category;
 import com.example.labb2.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<CategoryDto> getAllCategories(){
+    public List<Category> getAllCategories(){
         return service.getAllCategories();
     }
     @GetMapping("{id}")

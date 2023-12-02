@@ -7,13 +7,16 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import java.util.Collection;
+/*
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "role")
+
+ */
 public class Role {
-    @Id
+    /*@Id
     @Column(name = "roleId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,4 +26,6 @@ public class Role {
 
     @Enumerated(EnumType.STRING)
     private UserRoles role;
+
+     */
 }
