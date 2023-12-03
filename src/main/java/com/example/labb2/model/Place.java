@@ -1,13 +1,15 @@
 package com.example.labb2.model;
 
-import com.example.labb2.model.user.User;
+import com.example.labb2.util.PointSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.springframework.data.geo.Point;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
 
 import java.time.LocalDate;
 
@@ -25,18 +27,16 @@ public class Place {
     private Long placeId;
 
     @Column(name="name")
-    @Size(max = 255)
     private String name;
 
     @PrimaryKeyJoinColumn(name="categoryId")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId")
     private Category category;
 
-    @PrimaryKeyJoinColumn(name="userId")
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId")
-    private User user;
+
+    @Column(name = "userId")
+    private Long userId;
 
     @Column(name="isPrivate")
     private Boolean isPrivate;
@@ -55,7 +55,14 @@ public class Place {
     @Size(max = 255)
     private String description;
 
-    @Column(name="coordinates")
-    private Point coordinates;
+    @JsonSerialize(using = PointSerializer.class)
+    private Point<G2D> coordinate;
 
+    public Point<G2D> getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Point<G2D> coordinate) {
+        this.coordinate = coordinate;
+    }
 }

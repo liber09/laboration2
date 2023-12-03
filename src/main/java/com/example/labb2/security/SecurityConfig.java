@@ -1,4 +1,4 @@
-package com.example.labb2.config;
+package com.example.labb2.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,18 +18,41 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity(debug = true)
-@EnableMethodSecurity(
-        jsr250Enabled = true
-)
+
 public class SecurityConfig {
 
+
+    @Bean
+    public UserDetailsService users() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode("password"))
+                .roles("USER")
+                .build();
+        UserDetails linda = User.builder()
+                .username("linda")
+                .password(passwordEncoder().encode("password"))
+                .roles("USER")
+                .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(passwordEncoder().encode("password"))
+                .roles("USER", "ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin, linda);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(
+                .authorizeRequests(
                         auth -> auth
                                 .requestMatchers(HttpMethod.GET, "/error").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/geo").permitAll()
@@ -42,33 +65,9 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/api/locations/*").authenticated()
                                 .requestMatchers(HttpMethod.PATCH, "/api/locations/*").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/api/locations/*").authenticated()
-                                .anyRequest().denyAll()
                 )
                 .build();
     }
 
-    @Bean
-    public UserDetailsService users() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER")
-                .build();
-        UserDetails sara = User.builder()
-                .username("sara")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER")
-                .build();
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER", "ADMIN")
-                .build();
-        return new InMemoryUserDetailsManager(user, admin, sara);
-    }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }
