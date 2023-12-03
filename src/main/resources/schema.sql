@@ -3,7 +3,7 @@ USE springBootLab2;
 CREATE TABLE IF NOT EXISTS category(
         id int PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(255),
-        description TEXT(65535));
+        description TEXT);
 CREATE TABLE IF NOT EXISTS place(
         id int PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(255),

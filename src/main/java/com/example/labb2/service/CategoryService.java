@@ -12,9 +12,13 @@ import java.util.Optional;
 @Service
 public class CategoryService implements ICategoryService {
     CategoryRepository repository;
+
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.repository = categoryRepository;
+    }
     @Override
     public List<Category> getAllCategories() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
