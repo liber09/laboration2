@@ -1,6 +1,7 @@
 package com.example.labb2.service;
 
 import com.example.labb2.dto.model.CategoryDto;
+import com.example.labb2.exception.NotFoundException;
 import com.example.labb2.model.Category;
 import com.example.labb2.repository.CategoryRepository;
 import com.example.labb2.service.interfaces.ICategoryService;
@@ -23,7 +24,13 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public Optional<CategoryDto> getCategoryById(long categoryId) {
-        return map(repository.findById(categoryId));
+
+        var result = map(repository.findById(categoryId));
+        if (result.isPresent()){
+            return result;
+        }else{
+            throw new NotFoundException("Category with the id " + categoryId + " was not found.");
+        }
     }
 
     @Override
