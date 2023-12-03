@@ -11,6 +11,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Accessors(chain = true)
@@ -19,6 +20,12 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 
-public record CategoryDto(Long id, @Size(max = 255) String name, @Size(max = 255) String symbol,
-                          @Size(max = 255) String description, Set<Place> locations) implements Serializable {
+public record CategoryDto(Long categoryId,
+                          String name,
+                          String symbol,
+                          String description,
+                          Set<Place> locations,
+                          LocalDateTime createdAt,
+                          LocalDateTime updatedAt)
+        implements Serializable {
 }

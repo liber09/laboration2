@@ -3,6 +3,7 @@ package com.example.labb2.service;
 import com.example.labb2.dto.model.CategoryDto;
 import com.example.labb2.dto.model.PlaceDto;
 import com.example.labb2.model.Place;
+import com.example.labb2.repository.CategoryRepository;
 import com.example.labb2.repository.PlaceRepository;
 import com.example.labb2.service.interfaces.IPlaceService;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,10 @@ import java.util.Optional;
 @Service
 public class PlaceService implements IPlaceService {
     PlaceRepository repository;
+
+    public PlaceService(PlaceRepository placeRepository) {
+        this.repository = placeRepository;
+    }
 
     public Optional<Place> getPlaceById(long id) {
         return repository.findById(id);

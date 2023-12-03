@@ -27,8 +27,19 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public void createCategory(String name, String symbol, String description) {
+    public Category createCategory(CategoryDto category) {
+        var categoryCheck = repository.getCategoryByName(category.name());
+        if (categoryCheck.isEmpty()) {
+            return save(category);
+        }
+        throw new IllegalArgumentException("Category with the name " + category.name() + " already exist.");
+    }
 
+    public Category save(CategoryDto category) {
+        Category categoryEntity = new Category();
+        categoryEntity.setName(category.name());
+        categoryEntity.setSymbol(category.symbol());
+        return repository.save(categoryEntity);
     }
     static Optional<CategoryDto> map(Optional<Category> category){
         if(category.isEmpty()){
@@ -37,7 +48,7 @@ public class CategoryService implements ICategoryService {
         var mapCategory = category.get();
         return Optional.of(
                 new CategoryDto(mapCategory.getCategoryId(), mapCategory.getName(), mapCategory.getSymbol(), mapCategory.getDescription(),
-                        mapCategory.getLocations()
+                        mapCategory.getLocations(), mapCategory.getCreatedAt(), mapCategory.getChangedAt()
                 ));
     }
 }
