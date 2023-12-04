@@ -11,7 +11,6 @@ public record PlaceDto(
     Long categoryId,
     String userId,
     Boolean isPrivate,
-    String status,
     LocalDateTime created,
     LocalDateTime lastUpdated,
     String description,

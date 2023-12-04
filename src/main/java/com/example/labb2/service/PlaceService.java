@@ -90,7 +90,9 @@ public class PlaceService implements IPlaceService {
         newPlace.setCategory(category.get());
         newPlace.setName(place.name());
         newPlace.setDescription(place.description());
-        newPlace.setIsPrivate(place.isPrivate());
+        if(place.isPrivate() != null){
+            newPlace.setIsPrivate(place.isPrivate());
+        }
         newPlace.setUserId(userName);
         newPlace.setCreated(LocalDateTime.now().toLocalDate());
         newPlace.setLastUpdated(newPlace.getCreated());

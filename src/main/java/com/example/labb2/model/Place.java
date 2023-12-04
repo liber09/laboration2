@@ -39,11 +39,7 @@ public class Place {
     private String userId;
 
     @Column(name="isPrivate")
-    private Boolean isPrivate;
-
-    @Size(max = 255)
-    @Column(name="status")
-    private String status;
+    private Boolean isPrivate = false;
 
     @Column(name="created")
     private LocalDate created;
