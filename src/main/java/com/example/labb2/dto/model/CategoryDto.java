@@ -10,8 +10,7 @@ public record CategoryDto(Long categoryId,
                           String name,
                           String symbol,
                           String description,
-                          Set<Place> locations,
                           LocalDateTime createdAt,
-                          LocalDateTime updatedAt)
+                          LocalDateTime changedAt)
         implements Serializable {
 }

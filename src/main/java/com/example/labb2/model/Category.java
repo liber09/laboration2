@@ -1,5 +1,6 @@
 package com.example.labb2.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -9,11 +10,8 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.LinkedHashSet;
-import java.util.Set;
+
 
 @Getter
 @Setter
@@ -30,24 +28,26 @@ public class Category {
     @Column(name="name", unique = true)
     @Size(min = 2, max = 255)
     @NotNull
+    @JsonProperty("name")
     private String name;
 
     @Column(name="symbol")
     @Size(max = 255)
+    @JsonProperty("symbol")
     private String symbol;
 
     @Column(name="description")
     @Size(max = 255)
+    @JsonProperty("description")
     private String description;
 
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(name="createdAt")
+    @JsonProperty("createdAt")
     private LocalDateTime createdAt;
 
+    @JsonProperty("changedAt")
     @UpdateTimestamp
+    @Column(name="changedAt")
     private LocalDateTime changedAt;
-
-    @OneToMany(mappedBy = "category")
-    private Set<Place> locations = new LinkedHashSet<>();
-
 }

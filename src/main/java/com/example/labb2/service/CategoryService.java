@@ -46,6 +46,9 @@ public class CategoryService implements ICategoryService {
         Category categoryEntity = new Category();
         categoryEntity.setName(category.name());
         categoryEntity.setSymbol(category.symbol());
+        categoryEntity.setCreatedAt(category.createdAt());
+        categoryEntity.setChangedAt(category.changedAt());
+        categoryEntity.setDescription(category.description());
         return repository.save(categoryEntity);
     }
     static Optional<CategoryDto> map(Optional<Category> category){
@@ -55,8 +58,7 @@ public class CategoryService implements ICategoryService {
         var mapCategory = category.get();
         return Optional.of(
                 new CategoryDto(mapCategory.getCategoryId(), mapCategory.getName(), mapCategory.getSymbol(), mapCategory.getDescription(),
-                        //mapCategory.getCreatedAt(), mapCategory.getChangedAt()
-                        mapCategory.getLocations(), mapCategory.getCreatedAt(), mapCategory.getChangedAt()
+                        mapCategory.getCreatedAt(), mapCategory.getChangedAt()
                 ));
     }
 }
