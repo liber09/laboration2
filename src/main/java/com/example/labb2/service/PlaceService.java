@@ -2,6 +2,7 @@ package com.example.labb2.service;
 
 import com.example.labb2.dto.model.PlaceDto;
 import com.example.labb2.exception.NotFoundException;
+import com.example.labb2.model.Category;
 import com.example.labb2.model.Coordinates;
 import com.example.labb2.model.Place;
 import com.example.labb2.repository.CategoryRepository;
@@ -9,6 +10,7 @@ import com.example.labb2.repository.PlaceRepository;
 import com.example.labb2.service.interfaces.IPlaceService;
 import org.geolatte.geom.G2D;
 import org.geolatte.geom.Geometries;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -39,17 +41,18 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    @PostFilter("filterObject.isPrivate == false || filterObject.userId == authentication.name")
+    @PostFilter("!filterObject.isPrivate || filterObject.userId == authentication.name")
     public List<Place> getAllPublicPlaces() {
         return placeRepository.findAll();
     }
 
     public Optional<Place> getPublicPlaceById(Long placeId) {
+
         return placeRepository.findById(placeId);
     }
 
     @Override
-    @PostFilter("filterObject.isPrivate == false || filterObject.userId == authentication.name")
+    @PostFilter("!filterObject.isPrivate || filterObject.userId == authentication.name")
     public List<Place> getAllPublicPlacesInCategory(Long categoryId) {
         var category = categoryRepository.findById(categoryId);
 
@@ -101,8 +104,23 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    public Boolean updatePlace() {
-        return null;
+    @PreAuthorize("#place.userId().equalsIgnoreCase(authentication.name)")
+    public Place updatePlace(Long placeId, PlaceDto place) {
+
+        Optional<Place> placeInfo = getPlaceById(placeId);
+
+        if (placeInfo.isPresent()) {
+            Place placeToUpdate = placeInfo.get();
+
+            Optional<Category> category = categoryRepository.findById(place.categoryId());
+            placeToUpdate.setCategory(category.orElseThrow(() -> new NotFoundException("Category not found")));
+            placeToUpdate.setName(place.name());
+            placeToUpdate.setDescription(place.description());
+
+            return placeRepository.save(placeToUpdate);
+        } else {
+            throw new NotFoundException("Place with id: " + placeId + " does not exist");
+        }
     }
 
     @Override
@@ -120,5 +138,9 @@ public class PlaceService implements IPlaceService {
 
         place.setCoordinate(longLat);
         return place;
+    }
+
+    private Optional<Place> getPlaceById(Long placeId) {
+        return placeRepository.findById(placeId);
     }
 }

@@ -56,15 +56,16 @@ public class SecurityConfig {
                         auth -> auth
                                 .requestMatchers(HttpMethod.GET, "/error").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/geo").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/places/search").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/api/categories").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/categories/*").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/categories").hasRole("ADMIN")
                                 .requestMatchers(HttpMethod.POST, "/api/places").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/api/places").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/places/search").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/api/places/*").authenticated()
                                 .requestMatchers(HttpMethod.PATCH, "/api/places/*").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/api/places/*").authenticated()
+                                .anyRequest().denyAll()
                 )
                 .build();
     }

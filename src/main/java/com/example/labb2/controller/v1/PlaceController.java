@@ -55,5 +55,10 @@ public class PlaceController {
         return ResponseEntity.created(locationURI).body(createdPlace);
     }
 
+    @PatchMapping(path = "/{placeId}")
+    public ResponseEntity<?> updatePlace(@PathVariable Long placeId, @RequestBody PlaceDto place) {
+        return ResponseEntity.ok().body(service.updatePlace(placeId, place));
+    }
+
 
 }
