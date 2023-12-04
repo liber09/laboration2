@@ -48,7 +48,7 @@ public class CategoryController {
         var createdCategory = service.createCategory(category);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .buildAndExpand(createdCategory.getId())
+                .buildAndExpand(createdCategory.getCategoryId())
                 .toUri();
         return ResponseEntity.created(location).body(createdCategory);
     }

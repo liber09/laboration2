@@ -56,15 +56,15 @@ public class SecurityConfig {
                         auth -> auth
                                 .requestMatchers(HttpMethod.GET, "/error").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/geo").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/locations/search").authenticated()
                                 .requestMatchers(HttpMethod.GET, "/api/categories").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/categories/*").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/api/categories").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.POST, "/api/locations").authenticated()
-                                .requestMatchers(HttpMethod.GET, "/api/locations").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/locations/*").authenticated()
-                                .requestMatchers(HttpMethod.PATCH, "/api/locations/*").authenticated()
-                                .requestMatchers(HttpMethod.DELETE, "/api/locations/*").authenticated()
+                                .requestMatchers(HttpMethod.POST, "/api/places").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/api/places").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/places/search").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/api/places/*").authenticated()
+                                .requestMatchers(HttpMethod.PATCH, "/api/places/*").authenticated()
+                                .requestMatchers(HttpMethod.DELETE, "/api/places/*").authenticated()
                 )
                 .build();
     }

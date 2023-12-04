@@ -20,19 +20,19 @@ public class PlaceController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAll(@RequestParam(required = false) Optional<Long> search,
+    public ResponseEntity<?> getAll(@RequestParam(required = false) Optional<Long> searchId,
                                     @RequestParam(required = false) Optional<Long> category
     ) {
-        if (search.isPresent()) {
-            //return ResponseEntity.ok().body(service.findPublicById(search.get()));
+        if (searchId.isPresent()) {
+            return ResponseEntity.ok().body(service.getPublicPlaceById(searchId.get()));
         } else if (category.isPresent()) {
             return ResponseEntity.ok().body(service.getAllPublicPlacesInCategory(category.get()));
         }
         return ResponseEntity.ok().body(service.getAllPublicPlaces());
     }
 
-    @GetMapping("{id}")
-    public Optional<Place> getPlace(@PathVariable long id){
-        return service.getPlaceById(id);
+    @GetMapping(path = "/{userId}")
+    public ResponseEntity<?> getSpecific(@PathVariable String userId) {
+        return ResponseEntity.ok().body(service.getByUserId(userId));
     }
 }

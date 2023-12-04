@@ -36,7 +36,7 @@ public class Place {
 
 
     @Column(name = "userId")
-    private Long userId;
+    private String userId;
 
     @Column(name="isPrivate")
     private Boolean isPrivate;
@@ -55,14 +55,11 @@ public class Place {
     @Size(max = 255)
     private String description;
 
+    @Getter
     @JsonSerialize(using = PointSerializer.class)
     private Point<G2D> coordinate;
 
-    public Point<G2D> getCoordinate() {
-        return coordinate;
-    }
-
-    public void setCoordinate(Point<G2D> coordinate) {
-        this.coordinate = coordinate;
-    }
+    //public void setCoordinate(Point<G2D> coordinate) {
+        //this.coordinate = coordinate;
+    //}
 }

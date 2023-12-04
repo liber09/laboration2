@@ -1,13 +1,12 @@
 package com.example.labb2.service;
 
-import com.example.labb2.dto.model.CategoryDto;
-import com.example.labb2.dto.model.PlaceDto;
 import com.example.labb2.exception.NotFoundException;
 import com.example.labb2.model.Place;
 import com.example.labb2.repository.CategoryRepository;
 import com.example.labb2.repository.PlaceRepository;
 import com.example.labb2.service.interfaces.IPlaceService;
 import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,21 +34,24 @@ public class PlaceService implements IPlaceService {
         return placeRepository.findAll();
     }
 
-    @Override
-    public PlaceDto getPublicPlace() {
-        return null;
+    public Optional<Place> getPublicPlaceById(Long placeId) {
+        return placeRepository.findById(placeId);
     }
 
     @Override
+    @PostFilter("filterObject.isPrivate == false || filterObject.userId == authentication.name")
     public List<Place> getAllPublicPlacesInCategory(Long categoryId) {
         var category = categoryRepository.findById(categoryId);
 
         if (category.isEmpty()) {
             throw new NotFoundException("Category not found.");
         }
-
         return placeRepository.findAllByCategory_Name(category.get().getName());
+    }
 
+    @PreAuthorize("#userId.equalsIgnoreCase(authentication.name)")
+    public List<Place> getByUserId(String userId) {
+        return placeRepository.getPlacesByUserId(userId);
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface IPlaceService {
 
     Optional<Place> getPlaceById(long id);
     List<Place> getAllPublicPlaces ();
-    PlaceDto getPublicPlace ();
+    Optional<Place> getPublicPlaceById (Long placeId);
     List<Place> getAllPublicPlacesInCategory(Long categoryId);
     List<Place> getAllPlaces();
     List<Place> getPlacesInArea(int radius);

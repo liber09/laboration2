@@ -50,7 +50,4 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private Set<Place> locations = new LinkedHashSet<>();
 
-    public Long getId() {
-        return categoryId;
-    }
 }

@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.springframework.data.geo.Point;
+import org.geolatte.geom.G2D;
+import org.geolatte.geom.Point;
+
 
 import java.time.LocalDate;
 
@@ -23,11 +25,11 @@ public class PlaceDto {
     private Long placeId;
     private String name;
     private Category category;
-    private Long userId;
+    private String userId;
     private Boolean isPrivate;
     private String status;
     private LocalDate created;
     private LocalDate lastUpdated;
     private String description;
-    private Point coordinates;
+    private Point<G2D> coordinate;
 }

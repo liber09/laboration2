@@ -15,10 +15,6 @@ CREATE TABLE IF NOT EXISTS place(
         lastUpdated DATETIME,
         description TEXT,
         coordinates POINT);
-CREATE TABLE IF NOT EXISTS users(
-        id int PRIMARY KEY AUTO_INCREMENT,
-        first_name VARCHAR(255),
-        last_name VARCHAR(255));
 
 
 

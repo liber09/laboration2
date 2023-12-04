@@ -8,13 +8,11 @@ public class PlaceMapper {
         return new PlaceDto()
                 .setPlaceId(place.getPlaceId())
                 .setCategory(place.getCategory())
-                .setCoordinates(place.getCoordinates())
-                .setUser(place.getUser())
+                .setCoordinate(place.getCoordinate())
                 .setIsPrivate(place.getIsPrivate())
                 .setName(place.getName())
                 .setCreated(place.getCreated())
                 .setDescription(place.getDescription())
-                .setStatus(place.getStatus())
-                .setUser(place.getUser());
+                .setStatus(place.getStatus());
     }
 }
