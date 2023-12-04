@@ -60,5 +60,10 @@ public class PlaceController {
         return ResponseEntity.ok().body(service.updatePlace(placeId, place));
     }
 
+    @DeleteMapping(path = "/{placeId}")
+    public ResponseEntity<?> deletePlace(@PathVariable Long placeId) throws IllegalAccessException {
+        service.deletePlace(placeId);
+        return ResponseEntity.ok("Place with ID: " + placeId + " was successfully deleted");
+    }
 
 }

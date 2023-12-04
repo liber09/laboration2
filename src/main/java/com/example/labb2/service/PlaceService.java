@@ -124,9 +124,25 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    public void deletePlace() {
+    public void deletePlace(Long placeId) throws IllegalAccessException {
+        var placeToDelete = placeRepository.findById(placeId);
+        if (placeToDelete.isEmpty()) {
+            throw new NotFoundException("Place with ID: " + placeId + " does not exist");
+        }
 
+        var locationUserId = placeToDelete.get().getUserId();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = auth.getName();
+
+        if (locationUserId.equalsIgnoreCase(currentUser)) {
+            placeRepository.deleteById(placeId);
+
+        } else {
+            throw new IllegalAccessException("You can only delete your own places");
+        }
     }
+
 
     public Place verify(Coordinates position) {
         var place = new Place();

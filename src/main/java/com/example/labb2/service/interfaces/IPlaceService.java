@@ -19,5 +19,5 @@ public interface IPlaceService {
     Place createPlace(PlaceDto place);
     Place updatePlace(Long placeId, PlaceDto place);
 
-    void deletePlace();
+    void deletePlace(Long placeId) throws IllegalAccessException;
 }
