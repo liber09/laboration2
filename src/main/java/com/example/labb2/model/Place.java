@@ -35,7 +35,6 @@ public class Place {
     @JoinColumn(name = "categoryId")
     private Category category;
 
-
     @Column(name = "userId")
     private String userId;
 
@@ -56,17 +55,9 @@ public class Place {
     @Size(max = 255)
     private String description;
 
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
     @JsonSerialize(using = PointSerializer.class)
     private Point<G2D> coordinate;
 
-    public Point<G2D> getCoordinate() {
-        return coordinate;
-    }
 
-    public void setCoordinate(Point<G2D> coordinate) {
-        this.coordinate = coordinate;
-    }
 
 }

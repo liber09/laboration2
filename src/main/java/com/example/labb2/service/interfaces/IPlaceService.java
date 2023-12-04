@@ -15,7 +15,7 @@ public interface IPlaceService {
     List<Place> getAllPlaces();
     List<Place> getPlacesInArea(int radius);
 
-    void createPlace();
+    Place createPlace(PlaceDto place);
     Boolean updatePlace();
 
     void deletePlace();

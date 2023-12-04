@@ -1,13 +1,19 @@
 package com.example.labb2.controller.v1;
 
 
+import com.example.labb2.dto.model.CategoryDto;
+import com.example.labb2.dto.model.PlaceDto;
+import com.example.labb2.model.Category;
 import com.example.labb2.model.Place;
 import com.example.labb2.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 
 @RestController
@@ -35,4 +41,19 @@ public class PlaceController {
     public ResponseEntity<?> getSpecific(@PathVariable String userId) {
         return ResponseEntity.ok().body(service.getByUserId(userId));
     }
+
+    @PostMapping
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<Place> create(@RequestBody PlaceDto place) {
+        var createdPlace = service.createPlace(place);
+
+        URI locationURI = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .buildAndExpand(createdPlace.getPlaceId())
+                .toUri();
+
+        return ResponseEntity.created(locationURI).body(createdPlace);
+    }
+
+
 }

@@ -6,11 +6,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public record CategoryDto(Long categoryId,
-                          String name,
-                          String symbol,
-                          String description,
-                          LocalDateTime createdAt,
-                          LocalDateTime changedAt)
-        implements Serializable {
+public record CategoryDto(
+        Long categoryId,
+        String name,
+        String symbol,
+        String description,
+        LocalDateTime createdAt,
+        LocalDateTime changedAt)
+            implements Serializable {
 }

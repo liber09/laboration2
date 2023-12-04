@@ -1,35 +1,20 @@
 package com.example.labb2.dto.model;
 
 import com.example.labb2.model.Category;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.Accessors;
-import org.geolatte.geom.G2D;
-import org.geolatte.geom.Point;
+import com.example.labb2.model.Coordinates;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
-
-import java.time.LocalDate;
-
-@Getter
-@Setter
-@Accessors(chain = true)
-@NoArgsConstructor
-@ToString
-@JsonInclude(value = JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class PlaceDto {
-    private Long placeId;
-    private String name;
-    private Category category;
-    private String userId;
-    private Boolean isPrivate;
-    private String status;
-    private LocalDate created;
-    private LocalDate lastUpdated;
-    private String description;
-    private Point<G2D> coordinate;
+public record PlaceDto(
+    Long placeId,
+    String name,
+    Long categoryId,
+    String userId,
+    Boolean isPrivate,
+    String status,
+    LocalDateTime created,
+    LocalDateTime lastUpdated,
+    String description,
+    Coordinates coordinate)
+        implements Serializable {
 }
