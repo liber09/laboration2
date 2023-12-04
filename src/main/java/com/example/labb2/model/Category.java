@@ -42,12 +42,12 @@ public class Category {
     private String description;
 
     @CreationTimestamp
-    @Column(name="createdAt")
+    @Column(name="created_at")
     @JsonProperty("createdAt")
     private LocalDateTime createdAt;
 
     @JsonProperty("changedAt")
     @UpdateTimestamp
-    @Column(name="changedAt")
+    @Column(name="changed_at")
     private LocalDateTime changedAt;
 }
