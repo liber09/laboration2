@@ -4,6 +4,7 @@ import com.example.labb2.util.PointSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -55,11 +56,17 @@ public class Place {
     @Size(max = 255)
     private String description;
 
-    @Getter
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     @JsonSerialize(using = PointSerializer.class)
     private Point<G2D> coordinate;
 
-    //public void setCoordinate(Point<G2D> coordinate) {
-        //this.coordinate = coordinate;
-    //}
+    public Point<G2D> getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Point<G2D> coordinate) {
+        this.coordinate = coordinate;
+    }
+
 }

@@ -55,8 +55,8 @@ public class CategoryService implements ICategoryService {
         var mapCategory = category.get();
         return Optional.of(
                 new CategoryDto(mapCategory.getCategoryId(), mapCategory.getName(), mapCategory.getSymbol(), mapCategory.getDescription(),
-                        mapCategory.getCreatedAt(), mapCategory.getChangedAt()
-                        //mapCategory.getLocations(), mapCategory.getCreatedAt(), mapCategory.getChangedAt()
+                        //mapCategory.getCreatedAt(), mapCategory.getChangedAt()
+                        mapCategory.getLocations(), mapCategory.getCreatedAt(), mapCategory.getChangedAt()
                 ));
     }
 }

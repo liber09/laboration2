@@ -12,6 +12,7 @@ public interface PlaceRepository extends ListCrudRepository<Place, Long> {
     List<Place> getPlacesByUserId(String userId);
     List<Place> findAllByCategory_Name(String category);
 
+    /*
     @Query(value = """
             SELECT * FROM place
             WHERE ST_Within(coordinate, ST_GeomFromText(:polygon, 4326))
@@ -23,4 +24,5 @@ public interface PlaceRepository extends ListCrudRepository<Place, Long> {
             WHERE ST_Distance_Sphere(coordinate, :place) < :distance
                 """, nativeQuery = true)
     List<Place> filterOnDistance(@Param("place") Point<G2D> place, @Param("distance") double distance);
+    */
 }

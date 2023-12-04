@@ -46,10 +46,10 @@ public class CategoryController {
         Authentication authentication = securityContext.getAuthentication();
         logger.info("Authenticated user: " + authentication.getName());
         var createdCategory = service.createCategory(category);
-        URI location = ServletUriComponentsBuilder
+        URI newCategory = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .buildAndExpand(createdCategory.getCategoryId())
                 .toUri();
-        return ResponseEntity.created(location).body(createdCategory);
+        return ResponseEntity.created(newCategory).body(createdCategory);
     }
 }
