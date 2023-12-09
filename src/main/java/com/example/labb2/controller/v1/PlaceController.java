@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.FrameworkServlet;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -64,6 +65,11 @@ public class PlaceController {
     public ResponseEntity<?> deletePlace(@PathVariable Long placeId) throws IllegalAccessException {
         service.deletePlace(placeId);
         return ResponseEntity.ok("Place with ID: " + placeId + " was successfully deleted");
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getPlacesInArea(@PathVariable Double longitude, Double latitude, Double radius){
+        return ResponseEntity.ok().body(service.getPlacesInArea(latitude, longitude, radius));
     }
 
 }

@@ -46,7 +46,11 @@
             <artifactId>geolatte-geom</artifactId>
             <version>1.9.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.vividsolutions</groupId>
+            <artifactId>jts</artifactId>
+            <version>1.13</version>
+        </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>

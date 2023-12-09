@@ -8,20 +8,22 @@ import com.example.labb2.model.Place;
 import com.example.labb2.repository.CategoryRepository;
 import com.example.labb2.repository.PlaceRepository;
 import com.example.labb2.service.interfaces.IPlaceService;
-import org.geolatte.geom.G2D;
-import org.geolatte.geom.Geometries;
-import org.springframework.http.ResponseEntity;
+import org.geolatte.geom.*;
+import org.geolatte.geom.builder.DSL;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.geolatte.geom.G2D;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import org.geolatte.geom.jts.JTS;
+import com.vividsolutions.jts.geom.Geometry;
 
+import static org.geolatte.geom.builder.DSL.g;
 import static org.geolatte.geom.crs.CoordinateReferenceSystems.WGS84;
 
 @Service
@@ -70,11 +72,6 @@ public class PlaceService implements IPlaceService {
     @Override
     public List<Place> getAllPlaces() {
         return placeRepository.findAll();
-    }
-
-    @Override
-    public List<Place> getPlacesInArea(int radius) {
-        return null;
     }
 
     @Override
@@ -159,4 +156,11 @@ public class PlaceService implements IPlaceService {
     private Optional<Place> getPlaceById(Long placeId) {
         return placeRepository.findById(placeId);
     }
+
+    @Override
+    public List<Place> getPlacesInArea(Double latitude, Double longitude, Double radius) {
+        Point<G2D> location = DSL.point(WGS84, g(longitude, latitude));
+        return placeRepository.filterOnDistance(location, radius);
+    }
 }
+

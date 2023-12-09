@@ -14,7 +14,7 @@ public interface IPlaceService {
     Optional<Place> getPublicPlaceById (Long placeId);
     List<Place> getAllPublicPlacesInCategory(Long categoryId);
     List<Place> getAllPlaces();
-    List<Place> getPlacesInArea(int radius);
+    List<Place> getPlacesInArea(Double latitude, Double longitude, Double radius);
 
     Place createPlace(PlaceDto place);
     Place updatePlace(Long placeId, PlaceDto place);
